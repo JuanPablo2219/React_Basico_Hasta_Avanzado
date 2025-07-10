@@ -1,34 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import CoreConcepts from "./Components/CoreConcepts/CoreConcepts.jsx";
+import Header from "./Components/Header/Header.jsx"
+import TabButton from "./Components/TabButton/TabButton.jsx";
+import { CORE_CONCEPTS } from "./data.js"
+import { EXAMPLES } from "./data.js";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedTopic, setSelectedTopic] = useState(null);
+
+  const handeClickButton = (selectedButton) => {
+    setSelectedTopic(selectedButton);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <Header />
+      <section id="coreConcepts">
+        <h2>Principales Caracteristica</h2>
+        <div>
+          <CoreConcepts {...CORE_CONCEPTS[0]} />
+          <CoreConcepts {...CORE_CONCEPTS[1]} />
+          <CoreConcepts {...CORE_CONCEPTS[2]} />
+          <CoreConcepts {...CORE_CONCEPTS[3]} />
+        </div>
+      </section>
+
+      <section id="reactExamples">
+        <h2>Ejemplos de React</h2>
+        <menu>
+          <TabButton onclick={() => handeClickButton('components')}>Componentes</TabButton>
+          <TabButton onclick={() => handeClickButton('jsx')}>Jsx</TabButton>
+          <TabButton onclick={() => handeClickButton('props')}>Props</TabButton>
+          <TabButton onclick={() => handeClickButton('state')}>Estados</TabButton>
+        </menu>
+
+        {!selectedTopic ? (<p>Aquí se va a mostrar información sobre las caracteristicas de <em>react</em> para ello elige una opción del menú</p>)
+          : (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>
+                  {EXAMPLES[selectedTopic].code}
+                </code>
+              </pre>
+            </div>
+          )}
+      </section>
+
+      <main>
+        <h2>¡ Comenzando Con React</h2>
+      </main>
+    </div>
   )
 }
 
