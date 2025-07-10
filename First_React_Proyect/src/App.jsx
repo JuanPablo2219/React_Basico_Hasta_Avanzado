@@ -28,10 +28,10 @@ function App() {
       <section id="reactExamples">
         <h2>Ejemplos de React</h2>
         <menu>
-          <TabButton onclick={() => handeClickButton('components')}>Componentes</TabButton>
-          <TabButton onclick={() => handeClickButton('jsx')}>Jsx</TabButton>
-          <TabButton onclick={() => handeClickButton('props')}>Props</TabButton>
-          <TabButton onclick={() => handeClickButton('state')}>Estados</TabButton>
+          <TabButton isSelected={selectedTopic === 'components'} onclick={() => handeClickButton('components')}>Componentes</TabButton>
+          <TabButton isSelected={selectedTopic === 'jsx'} onclick={() => handeClickButton('jsx')}>Jsx</TabButton>
+          <TabButton isSelected={selectedTopic === 'props'} onclick={() => handeClickButton('props')}>Props</TabButton>
+          <TabButton isSelected={selectedTopic === 'state'} onclick={() => handeClickButton('state')}>Estados</TabButton>
         </menu>
 
         {!selectedTopic ? (<p>Aquí se va a mostrar información sobre las caracteristicas de <em>react</em> para ello elige una opción del menú</p>)
