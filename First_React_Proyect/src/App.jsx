@@ -18,10 +18,11 @@ function App() {
       <section id="coreConcepts">
         <h2>Principales Caracteristica</h2>
         <div>
-          <CoreConcepts {...CORE_CONCEPTS[0]} />
-          <CoreConcepts {...CORE_CONCEPTS[1]} />
-          <CoreConcepts {...CORE_CONCEPTS[2]} />
-          <CoreConcepts {...CORE_CONCEPTS[3]} />
+          {CORE_CONCEPTS.map((concep) => {
+            return (
+              <CoreConcepts key={concep.title} imagePath={concep.imagePath} title={concep.title} description={concep.description}/>
+            )
+          })}
         </div>
       </section>
 
