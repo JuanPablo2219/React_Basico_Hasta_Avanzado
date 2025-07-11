@@ -6,7 +6,7 @@ import stateImage from "./img/state-logo.png";
 export const CORE_CONCEPTS = [
   { imagePath: componentsImage,
     title: "Componentes",
-    description: "El nucle pricipal de una construcción de una UI con react. La combinanción de distintos componentes logra una compocición de una UI mas manejable"
+    description: "El nucleo principal de una construcción de una UI con react. La combinanción de distintos componentes logra una compocición de una UI mas manejable"
   },
   {
     imagePath: jsxImage,
